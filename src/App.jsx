@@ -3,7 +3,7 @@ import { useState } from "react";
 const questions = [
   {
     section: "Daily Repetition",
-    icon: "â»",
+    icon: "Ã¢ÂÂ»",
     items: [
       "What's the most repetitive task you do every week?",
       "Where do you find yourself copying information from one place to another?",
@@ -12,7 +12,7 @@ const questions = [
   },
   {
     section: "Time Leaks",
-    icon: "â·",
+    icon: "Ã¢ÂÂ·",
     items: [
       "What task takes you the longest to start because the setup is annoying?",
       "Where does a project slow down the most before reaching the next person?",
@@ -21,16 +21,16 @@ const questions = [
   },
   {
     section: "Tool Friction",
-    icon: "â",
+    icon: "Ã¢ÂÂ",
     items: [
       "What apps and tools do you use every single day?",
-      "Do any tools feel disconnected â like you wish they just talked to each other?",
+      "Do any tools feel disconnected Ã¢ÂÂ like you wish they just talked to each other?",
       "Where does information get lost or delayed between people?",
     ],
   },
   {
     section: "Dream Fix",
-    icon: "â¦",
+    icon: "Ã¢ÂÂ¦",
     items: [
       "If you could make ONE task disappear from your week, what would it be?",
       "If that was fixed, what would you do with that saved time?",
@@ -55,7 +55,7 @@ export default function AuditForm() {
     setAnswers((prev) => ({ ...prev, [key]: value }));
   };
 
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxt4oGTOPwC98zxTloIHNqDublj__pi-s9sS4MJ4wMbU6UNrnisURCBDPwofjKSYTF/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyY5hG-OdYW7ztChIW_S6uKk29VgzhBSMxj8MQURNruC6TltnvgUzpKLiz615B6pC7h/exec";
 
   const handleSubmit = async () => {
     if (!name.trim()) return;
@@ -95,7 +95,7 @@ export default function AuditForm() {
     return (
       <div style={styles.page}>
         <div style={styles.thankYou}>
-          <div style={styles.thankIcon}>â¦</div>
+          <div style={styles.thankIcon}>Ã¢ÂÂ¦</div>
           <h2 style={styles.thankTitle}>Thank you, {name}.</h2>
           <p style={styles.thankSub}>
             Your answers will help shape how we work smarter at Solid Design Studio.
@@ -198,7 +198,7 @@ export default function AuditForm() {
                 </label>
                 <textarea
                   style={styles.textarea}
-                  placeholder="Write freely â there are no wrong answers here."
+                  placeholder="Write freely Ã¢ÂÂ there are no wrong answers here."
                   rows={3}
                   value={answers[key] || ""}
                   onChange={(e) => handleChange(key, e.target.value)}
@@ -210,7 +210,7 @@ export default function AuditForm() {
           <div style={styles.navRow}>
             {activeSection > 0 && (
               <button style={styles.navBtn} onClick={() => setActiveSection((p) => p - 1)}>
-                â Previous
+                Ã¢ÂÂ Previous
               </button>
             )}
             {activeSection < questions.length - 1 ? (
@@ -218,7 +218,7 @@ export default function AuditForm() {
                 style={{ ...styles.navBtn, ...styles.navBtnNext }}
                 onClick={() => setActiveSection((p) => p + 1)}
               >
-                Next â
+                Next Ã¢ÂÂ
               </button>
             ) : (
               <button
@@ -227,7 +227,7 @@ export default function AuditForm() {
                 onClick={handleSubmit}
                 disabled={submitting}
               >
-                {submitting ? "Sending..." : "Submit Audit â¦"}
+                {submitting ? "Sending..." : "Submit Audit Ã¢ÂÂ¦"}
               </button>
             )}
           </div>
