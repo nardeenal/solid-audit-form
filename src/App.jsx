@@ -3,7 +3,7 @@ import { useState } from "react";
 const questions = [
   {
     section: "Daily Repetition",
-    icon: "↻",
+    icon: "â»",
     items: [
       "What's the most repetitive task you do every week?",
       "Where do you find yourself copying information from one place to another?",
@@ -12,7 +12,7 @@ const questions = [
   },
   {
     section: "Time Leaks",
-    icon: "◷",
+    icon: "â·",
     items: [
       "What task takes you the longest to start because the setup is annoying?",
       "Where does a project slow down the most before reaching the next person?",
@@ -21,16 +21,16 @@ const questions = [
   },
   {
     section: "Tool Friction",
-    icon: "⚙",
+    icon: "â",
     items: [
       "What apps and tools do you use every single day?",
-      "Do any tools feel disconnected — like you wish they just talked to each other?",
+      "Do any tools feel disconnected â like you wish they just talked to each other?",
       "Where does information get lost or delayed between people?",
     ],
   },
   {
     section: "Dream Fix",
-    icon: "✦",
+    icon: "â¦",
     items: [
       "If you could make ONE task disappear from your week, what would it be?",
       "If that was fixed, what would you do with that saved time?",
@@ -76,11 +76,12 @@ export default function AuditForm() {
     };
 
     try {
-      await fetch(APPS_SCRIPT_URL, {
-        method: "POST",
+      const qs = Object.entries(payload)
+        .map(([k, v]) => encodeURIComponent(k) + "=" + encodeURIComponent(v))
+        .join("&");
+      await fetch(APPS_SCRIPT_URL + "?" + qs, {
+        method: "GET",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
       });
     } catch (e) {
       console.error(e);
@@ -94,7 +95,7 @@ export default function AuditForm() {
     return (
       <div style={styles.page}>
         <div style={styles.thankYou}>
-          <div style={styles.thankIcon}>✦</div>
+          <div style={styles.thankIcon}>â¦</div>
           <h2 style={styles.thankTitle}>Thank you, {name}.</h2>
           <p style={styles.thankSub}>
             Your answers will help shape how we work smarter at Solid Design Studio.
@@ -197,7 +198,7 @@ export default function AuditForm() {
                 </label>
                 <textarea
                   style={styles.textarea}
-                  placeholder="Write freely — there are no wrong answers here."
+                  placeholder="Write freely â there are no wrong answers here."
                   rows={3}
                   value={answers[key] || ""}
                   onChange={(e) => handleChange(key, e.target.value)}
@@ -209,7 +210,7 @@ export default function AuditForm() {
           <div style={styles.navRow}>
             {activeSection > 0 && (
               <button style={styles.navBtn} onClick={() => setActiveSection((p) => p - 1)}>
-                ← Previous
+                â Previous
               </button>
             )}
             {activeSection < questions.length - 1 ? (
@@ -217,7 +218,7 @@ export default function AuditForm() {
                 style={{ ...styles.navBtn, ...styles.navBtnNext }}
                 onClick={() => setActiveSection((p) => p + 1)}
               >
-                Next →
+                Next â
               </button>
             ) : (
               <button
@@ -226,7 +227,7 @@ export default function AuditForm() {
                 onClick={handleSubmit}
                 disabled={submitting}
               >
-                {submitting ? "Sending..." : "Submit Audit ✦"}
+                {submitting ? "Sending..." : "Submit Audit â¦"}
               </button>
             )}
           </div>
